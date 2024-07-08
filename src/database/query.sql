@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(255) NOT NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    )
+)
 
 -- Membuat Tabel 'categories' 
 CREATE TABLE IF NOT EXISTS categories (
@@ -28,3 +28,6 @@ CREATE TABLE IF NOT EXISTS posts (
     FOREIGN KEY (userId) REFERENCES users(id),
     FOREIGN KEY (categoryId) REFERENCES categories(id)
 )
+
+-- Menambahkan kolom 'role' pada tabel 'user'
+ALTER TABLE users ADD COLUMN role INT DEFAULT 0;
