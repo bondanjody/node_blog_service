@@ -5,6 +5,11 @@ const getAllPosts = async () => {
     return rows;
 };
 
+const getAllPostsByUser = async (userId: number) => {
+    const [rows]: any = await pool.execute('SELECT * FROM posts LEFT JOIN users ON users.id = posts.userId WHERE userId = ?;', [userId]);
+    return rows;
+};
+
 const getPostById = async (id: number) => {
     const [rows]: any = await pool.execute(
         'SELECT * FROM posts WHERE id = ?',
@@ -39,6 +44,7 @@ const deletePost = async (id: number) => {
 
 export default {
     getAllPosts,
+    getAllPostsByUser,
     getPostById,
     createPost,
     updatePost,
