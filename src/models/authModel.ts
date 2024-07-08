@@ -4,6 +4,12 @@ interface InputRegister {
     password: string
 }
 
+interface InputLogin {
+    username: string,
+    password: string
+}
+
 export {
-    InputRegister
+    InputRegister,
+    InputLogin
 }
