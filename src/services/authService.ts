@@ -5,14 +5,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// const register = async (username: string, password: string, email: string) => {
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const [result] = await pool.execute(
-//         'INSERT INTO users (username, password, email) VALUES (?, ?, ?)',
-//         [username, hashedPassword, email]
-//     );
-//     return result;
-// };
 const register = async (username: string, password: string, email: string) => {
     // Pengecekan apakah username atau email sudah terdaftar
     const [rows] = await pool.execute(
