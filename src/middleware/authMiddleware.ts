@@ -5,7 +5,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
-    const token = req.headers['authorization'];
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]
     if (token) {
         jwt.verify(token, process.env.JWT_SECRET!, (err, decoded) => {
             if (err) {

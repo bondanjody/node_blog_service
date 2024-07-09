@@ -42,7 +42,7 @@ const login = async (username: string, password: string) => {
     );
     const user = rows[0];
     if (user && await bcrypt.compare(password, user.password)) {
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, { expiresIn: '30s' });
         return { token, user };
     }
     return null;
